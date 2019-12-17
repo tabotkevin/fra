@@ -1,0 +1,70 @@
+{% extends "admin/layout.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Features List{% endblock %}
+
+{% block page_title %}Features {% endblock %}
+
+{% block page_content %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Features List</h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Settings 1</a>
+            </li>
+            <li><a href="#">Settings 2</a>
+            </li>
+          </ul>
+        </li>
+        <li><a class="close-link"><i class="fa fa-close"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Target Date</th>
+            <th>Product Area</th>
+            <th>Priority</th>
+            <th>client</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% if features %}
+           {% for feature in features %}
+              <tr>
+                <td>{{ feature.title }}</th>
+                <td>{{ feature.description }}</td>
+                <td>{{ moment(feature.target_date).format('ll')}} </td>
+                <td>{{ feature.product_area.name }}</td>
+                <td>{{ feature.priority }}</th>
+                <td>{{ feature.client.name }}</th>
+                <td><a href="{{ url_for('admin.edit_feature', id=feature.id) }}" class="btn btn-success btn-xs">Edit Feature</a></td>
+              </tr>
+           {% endfor %}
+        {% endif %}
+        </tbody>
+      </table>
+      {% if pagination %}
+         <div class="pagination pull-right">
+           {{ macros.pagination_widget(pagination, 'admin.features') }}
+         </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

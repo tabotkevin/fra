@@ -1,0 +1,23 @@
+{% extends "auth/layout.html" %}
+
+{% block title %}IWS | Login {% endblock %}
+
+
+{% block content %}
+    <form method="POST" action="{{ url_for('auth.login') }}">
+      {{ form.csrf_token }}
+      <h1>Login</h1>
+      <div>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email"/> <span> {% if form.email.errors %}{{ form.email.errors[0] }}{% endif%}</span>
+      </div>
+      <div>
+        <input type="password" class="form-control" name="password" placeholder="Password"/><span> {% if form.password.errors %}{{ form.password.errors[0] }}{% endif%}</span>
+      </div>
+      <div>
+        {{ form.submit(class='btn btn-default  submit') }}
+        <a class="reset_pass" href="{{ url_for('auth.register') }}">Create Account</a>
+        <a class="reset_pass" href="{{ url_for('auth.password_reset_request') }}">Reset Password</a>
+      </div>
+      <div>
+    </form>
+{% endblock %}

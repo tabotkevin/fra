@@ -1,0 +1,88 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}Edit Feature{% endblock %}
+
+{% block page_title %}Edit Feature{% endblock %}
+
+{% block page_content %}
+
+ <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Feature Information <small></small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <br />
+                  <form id="demo-form2" method="post" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.title(class='form-control col-md-7 col-xs-12') }}
+                        <span> {% if form.title.errors %}{{ form.title.errors[0] }}{% endif %}</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description <span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.description(class='form-control col-md-7 col-xs-12', row='3') }}
+                        <span> {% if form.description.errors %}{{ form.description.errors[0] }}{% endif %}</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Target Date <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.target_date(class='form-control') }}
+                        <span> {% if form.target_date.errors %}{{ form.target_date.errors[0] }}{% endif %}</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Product Area</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          {{ form.product_area(class='form-control') }}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Priority</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          {{ form.priority(class='form-control') }}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Client</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          {{ form.client(class='form-control') }}
+                        </div>
+                    </div>
+                    
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <a class="btn btn-danger" href="{{ url_for('admin.delete_feature', id=feature.id) }}">Delete</a>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+{% endblock %}

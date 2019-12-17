@@ -1,0 +1,74 @@
+{% extends "admin/layout.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Users List{% endblock %}
+
+{% block page_title %}Users {% endblock %}
+
+{% block page_content %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Users List</h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Settings 1</a>
+            </li>
+            <li><a href="#">Settings 2</a>
+            </li>
+          </ul>
+        </li>
+        <li><a class="close-link"><i class="fa fa-close"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Image</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Confirmed</th>
+            <th>Allowed</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% if users %}
+           {% for user in users %}
+              <tr>
+                <td>{{ user.first_name }}</th>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td><img src="{{ url_for('static', filename='images/users/'+user.image) }}" height="40" width="40" class="img-thumbnail"></td>
+                <td>{{ user.phone }}</th>
+                <td>{{ user.role.name }}</th>
+                <td>{{ user.confirmed }}</th>
+                <td>{{ user.allowed }}</th>
+                <td><a href="{{ url_for('admin.edit_user', id=user.id) }}" class="btn btn-success btn-xs">Edit User</a></td>
+              </tr>
+           {% endfor %}
+        {% endif %}
+        </tbody>
+      </table>
+      {% if pagination %}
+         <div class="pagination pull-right">
+           {{ macros.pagination_widget(pagination, 'admin.users') }}
+         </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

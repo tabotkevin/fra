@@ -1,0 +1,23 @@
+{% extends "auth/layout.html" %}
+
+{% block title %} IWS | Unallowed {% endblock %}
+
+
+{% block content %}
+
+    <h1>
+        Hello, {{ current_user.first_name }}!
+    </h1>
+    <h3>Your account is not allowed to access this platform.</h3>
+    <p>
+        Please contact the administrator.
+        We are very sorry for any inconviniences.
+    </p>
+    <p>
+        To logout
+        <a href="{{ url_for('auth.logout') }}">Click here</a>
+    </p>
+
+    {% block footer %} {% endblock %}
+
+{% endblock %}
