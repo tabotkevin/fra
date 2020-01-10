@@ -14,7 +14,7 @@ Jinja2==2.8
 pyparsing==2.0.1
 python-dateutil==1.5
 pytz==2013.7
-requests==2.10.0
+requests==2.20.0
 six==1.4.1
 SQLAlchemy==1.0.14
 virtualenv==15.0.3
