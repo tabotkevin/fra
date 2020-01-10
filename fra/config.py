@@ -12,12 +12,12 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SECRET_KEY = '\xb0w5K\xfc9s/\xbd2\x9fjF@\xb8\xcd\x97\x87}\xeb\xa9\x82\x95\\'
     MAX_CONTENT_LENGTH = 4 * 1024 * 1024
-    MAIL_SERVER = 'mail.dreamroomltd.com'
+    MAIL_SERVER = 'mail.server.com'
     MAIL_PORT = 587
-    MAIL_USERNAME = 'iws@dreamroomltd.com'
-    MAIL_PASSWORD = 'password@aA'
+    MAIL_USERNAME = 'email@server.com'
+    MAIL_PASSWORD = 'password'
     IWS_MAIL_SUBJECT_PREFIX = '[IWS]'
     IWS_MAIL_SENDER = 'IWS <noreply@iws.com>'
-    IWS_ADMIN = 'tabot.kevin@gmail.com'
-    ADMIN = 'tabot.kevin@gmail.com'
+    IWS_ADMIN = 'admin@gmail.com'
+    ADMIN = 'admin@gmail.com'
     TEMPLATE_AUTO_RELOAD = True
